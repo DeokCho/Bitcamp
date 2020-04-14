@@ -146,10 +146,11 @@ public class MemberView extends JFrame implements ActionListener{
 		
 		if(e.getSource()== submitButton) {
 			nameText.setText("1번맨,2번맨,3번맨,4번맨,5번맨");
-			useridText.setText("No.1,No.2,No.3,No.4,No.5");
+			useridText.setText("1,2,3,4,5");
 			passwordText.setText("1,2,3,4,5");
 			ssnText.setText("910101-1,920202-2,930303-3,940404-4,950505-5");
 			addrText.setText("서울,대전,대구,부산,인천");
+			
 			String[] names = nameText.getText().split(",");
 			String[] userids= useridText.getText().split(",");
 			String[] passwords = passwordText.getText().split(",");
@@ -182,11 +183,12 @@ public class MemberView extends JFrame implements ActionListener{
 			JOptionPane.showMessageDialog(this, "login"+useridText.getText()+","+passwordText.getText());
 			Member member = new Member();
 			member.setUserid(useridText.getText());
-			member.setUserid(passwordText.getText());
-			if(memberService.login(member) == true) {
-				JOptionPane.showMessageDialog(this, "로그인 성공");
+			member.setPasswd(passwordText.getText());
+			Member login = memberService.login(member);
+			if(login != null ) {
+				resultText.setText(login.toString());
 			}else {
-				JOptionPane.showMessageDialog(this, "로그인 성공");
+				resultText.setText("로그인 실패");
 			}
 		}
 	}
