@@ -10,7 +10,7 @@ public class GradeController {
 	// "[%s : 총점 %d 점, 평균 %d 점,학점 : %s]"
 
 	public static void main(String[] args) {
-		GradeService gradeService = new GradeServcieImpl();
+		GradeService gradeService = new GradeServiceImpl();
 		Member[] members = new Member[3];
 		Grade grade = null;
 		while (true) {

@@ -19,6 +19,6 @@ import lombok.Data;
 @Data
 public class Grade {
 	private String name;
-	private int korean,math,english;
+	private int korean,english, math,java;
 		
 }

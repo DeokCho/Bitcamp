@@ -1,25 +1,22 @@
 package com.jse.grade;
 
-public class GradeServcieImpl implements GradeService {
+public class GradeServiceImpl implements GradeService {
 
 	private Grade[] grades;
 	private int count;
 
-	public GradeServcieImpl() {
-		grades = new Grade[3];
+	public GradeServiceImpl() {
+		grades = new Grade[5];
 		count = 0;
 	}
-
 	@Override
 	public void setGrades(Grade[] grades) {
 		this.grades = grades;
 	}
-
 	@Override
 	public Grade[] getGrades() {
 		return grades;
 	}
-
 	@Override
 	public void add(Grade grade) {
 		grades[count] = grade;
@@ -40,12 +37,12 @@ public class GradeServcieImpl implements GradeService {
 
 	@Override
 	public int total(Grade grade) {
-		return grade.getKorean() + grade.getEnglish() + grade.getMath();
+		return grade.getKorean() + grade.getEnglish() + grade.getMath() + grade.getJava();
 	}
 
 	@Override
 	public int average(Grade grade) {
-		return total(grade) / 3;
+		return total(grade) / 4;
 	}
 
 	@Override
@@ -72,7 +69,7 @@ public class GradeServcieImpl implements GradeService {
 	@Override
 	public String printGrades() {
 		String result = "";
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 4; i++) {
 			result += String.format("[%s : 총점 %d 점, 평균 %d 점,학점 : %s] \n", grades[i].getName(), total(grades[i]),
 					average(grades[i]), record(grades[i]));
 		}
