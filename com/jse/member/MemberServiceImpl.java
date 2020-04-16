@@ -3,24 +3,15 @@ package com.jse.member;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberService{
 	private Member[] members;
 	private int count;
 
 	public MemberServiceImpl() {
 		members = new Member[5];
+		count = 0;
 	}
-
-	@Override
-	public void setMembers(Member[] members) {
-		this.members = members;
-	}
-
-	@Override
-	public Member[] getMemebers() {
-		return members;
-	}
-
+	
 	@Override
 	public void add(Member member) {
 		members[count] = member;
@@ -28,17 +19,50 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public Member[] list() {
+		return members;
+	}
+
+	@Override
+	public Member[] searchByName(String name) {
+		Member[] returnName = new Member[5];
+		return returnName;
+	}
+
+	@Override
+	public Member[] searchByGender(String gender) {
+		Member[] returnGender = new Member[5];
+		return returnGender;
+	}
+
+	@Override
+	public Member detail(String userid) {
+		Member returnUserId = new Member();
+		return returnUserId;
+	}
+
+	@Override
+	public int count() {
+		return count;
+	}
+
+	@Override
+	public int count(String name) {
+		int returnCount = 0;
+		return returnCount;
+	}
+
+	@Override
 	public Member login(Member member) {
-		Member login = null;
-		for (int i = 0; i < members.length; i++) {
-			if (member.getUserid().equals(members[i].getUserid())
-					&& member.getPasswd().equals(members[i].getPasswd())) {
-				login = new Member();
-				login = members[i];
-				break;
-			}else {
-			}
-		}
-		return login;
+		Member returnLogin = new Member();
+		return returnLogin;
+	}
+
+	@Override
+	public void update(Member member) {
+	}
+
+	@Override
+	public void delete(Member member) {
 	}
 }

@@ -4,7 +4,6 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,239 +11,245 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import sun.print.resources.serviceui;
-
-public class MemberView extends JFrame implements ActionListener {
+public class MemberView extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
-	private Container container;
-	private JLabel title, nameLabel, useridLabel, passwordLabel, ssnLabel, addrLabel;
-	private JTextField nameText, useridText, passwordText, ssnText, addrText;
-	private JTextArea resultText;
-	private JButton submitButton, listButton, loginButton, nameButton, countButton, detailButton, genderButton,
-			updateButton, deleteButton;
-	public MemberService memberService;
-
-	public void open() {
-		memberService = new MemberServiceImpl();
-
-		setTitle("Swing Exercise");
-		setBounds(300, 90, 900, 600);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(false);
-
-		container = getContentPane();
-		container.setLayout(null);
-
-		title = new JLabel("Swing Form");
-		title.setFont(new Font("Arial", Font.PLAIN, 30));
-		title.setSize(300, 30);
-		title.setLocation(300, 30);
-		container.add(title);
-
-		nameLabel = new JLabel("Name");
-		nameLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		nameLabel.setSize(100, 20);
-		nameLabel.setLocation(100, 100);
-		container.add(nameLabel);
-
-		nameText = new JTextField();
-		nameText.setFont(new Font("맑은고딕", Font.PLAIN, 15));
-		nameText.setSize(190, 20);
-		nameText.setLocation(200, 100);
-		container.add(nameText);
-
-		useridLabel = new JLabel("Userid");
-		useridLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		useridLabel.setSize(100, 20);
-		useridLabel.setLocation(100, 150);
-		container.add(useridLabel);
-
-		useridText = new JTextField();
-		useridText.setFont(new Font("맑은고딕", Font.PLAIN, 15));
-		useridText.setSize(150, 20);
-		useridText.setLocation(200, 150);
-		container.add(useridText);
-
-		passwordLabel = new JLabel("Password");
-		passwordLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		passwordLabel.setSize(100, 20);
-		passwordLabel.setLocation(100, 200);
-		container.add(passwordLabel);
-
-		passwordText = new JTextField();
-		passwordText.setFont(new Font("맑은고딕", Font.PLAIN, 15));
-		passwordText.setSize(150, 20);
-		passwordText.setLocation(200, 200);
-		container.add(passwordText);
-
-		ssnLabel = new JLabel("SSN");
-		ssnLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		ssnLabel.setSize(100, 20);
-		ssnLabel.setLocation(100, 250);
-		container.add(ssnLabel);
-
-		ssnText = new JTextField();
-		ssnText.setFont(new Font("맑은고딕", Font.PLAIN, 15));
-		ssnText.setSize(150, 20);
-		ssnText.setLocation(200, 250);
-		container.add(ssnText);
-
-		addrLabel = new JLabel("Address");
-		addrLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-		addrLabel.setSize(100, 20);
-		addrLabel.setLocation(100, 300);
-		container.add(addrLabel);
-
-		addrText = new JTextField();
-		addrText.setFont(new Font("맑은고딕", Font.PLAIN, 15));
-		addrText.setSize(150, 20);
-		addrText.setLocation(200, 300);
-		container.add(addrText);
-
-		submitButton = new JButton("Submit");
-		submitButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		submitButton.setSize(100, 20);
-		submitButton.setLocation(120, 450);
-		container.add(submitButton);
-		submitButton.addActionListener(this);
-
-		listButton = new JButton("List");
-		listButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		listButton.setSize(100, 20);
-		listButton.setLocation(240, 450);
-		container.add(listButton);
-		listButton.addActionListener(this);
-
-		loginButton = new JButton("Login");
-		loginButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		loginButton.setSize(100, 20);
-		loginButton.setLocation(360, 450);
-		container.add(loginButton);
-		loginButton.addActionListener(this);
-
-		detailButton = new JButton("Detail");
-		detailButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		detailButton.setSize(100, 20);
-		detailButton.setLocation(120, 480);
-		container.add(detailButton);
-		detailButton.addActionListener(this);
-
-		nameButton = new JButton("name");
-		nameButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		nameButton.setSize(100, 20);
-		nameButton.setLocation(240, 480);
-		container.add(nameButton);
-		nameButton.addActionListener(this);
-
-		genderButton = new JButton("gender");
-		genderButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		genderButton.setSize(100, 20);
-		genderButton.setLocation(360, 480);
-		container.add(genderButton);
-		genderButton.addActionListener(this);
-
-		countButton = new JButton("count");
-		countButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		countButton.setSize(100, 20);
-		countButton.setLocation(120, 510);
-		container.add(countButton);
-		countButton.addActionListener(this);
-
-		updateButton = new JButton("Update");
-		updateButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		updateButton.setSize(100, 20);
-		updateButton.setLocation(240, 510);
-		container.add(updateButton);
-		updateButton.addActionListener(this);
-
-		deleteButton = new JButton("Delete");
-		deleteButton.setFont(new Font("Arial", Font.PLAIN, 15));
-		deleteButton.setSize(100, 20);
-		deleteButton.setLocation(360, 510);
-		container.add(deleteButton);
-		deleteButton.addActionListener(this);
-
-		resultText = new JTextArea();
-		resultText.setFont(new Font("맑은고딕", Font.PLAIN, 15));
-		resultText.setSize(300, 400);
-		resultText.setLocation(500, 100);
-		resultText.setLineWrap(true);
-		resultText.setEditable(false);
-		container.add(resultText);
-
-		setVisible(true);
-	}
-
+    private Container container; 
+    private JLabel title,nameLabel,useridLabel,passwordLabel,
+    				ssnLabel,addrLabel; 
+    private JTextField nameText, useridText, passwordText, ssnText,
+    					addrText; 
+    private JTextArea resultText; 
+    private JButton submitButton, listButton, loginButton, detailButton, nameButton,
+    				genderButton, countButton, updateButton, deleteButton; 
+    public MemberService memberService;
+    public void open(){ 
+        memberService = new MemberServiceImpl();
+    	setTitle("Swing Form"); 
+        setBounds(300, 90, 900, 600); 
+        setDefaultCloseOperation(EXIT_ON_CLOSE); 
+        setResizable(false); 
+  
+        container = getContentPane(); 
+        container.setLayout(null); 
+  
+        title = new JLabel("Registration Form"); 
+        title.setFont(new Font("Arial", Font.PLAIN, 30)); 
+        title.setSize(300, 30); 
+        title.setLocation(300, 30); 
+        container.add(title); 
+  
+        nameLabel = new JLabel("Name"); 
+        nameLabel.setFont(new Font("Arial", Font.PLAIN, 20)); 
+        nameLabel.setSize(100, 20); 
+        nameLabel.setLocation(100, 100); 
+        container.add(nameLabel); 
+  
+        nameText = new JTextField(); 
+        nameText.setFont(new Font("맑은고딕", Font.PLAIN, 15)); 
+        nameText.setSize(190, 20); 
+        nameText.setLocation(200, 100); 
+        container.add(nameText); 
+  
+        useridLabel = new JLabel("Userid"); 
+        useridLabel.setFont(new Font("Arial", Font.PLAIN, 20)); 
+        useridLabel.setSize(100, 20); 
+        useridLabel.setLocation(100, 150); 
+        container.add(useridLabel); 
+  
+        useridText = new JTextField(); 
+        useridText.setFont(new Font("맑은고딕", Font.PLAIN, 15)); 
+        useridText.setSize(150, 20); 
+        useridText.setLocation(200, 150); 
+        container.add(useridText); 
+  
+        passwordLabel = new JLabel("Password"); 
+        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 20)); 
+        passwordLabel.setSize(100, 20); 
+        passwordLabel.setLocation(100, 200); 
+        container.add(passwordLabel); 
+        
+        passwordText = new JTextField(); 
+        passwordText.setFont(new Font("맑은고딕", Font.PLAIN, 15)); 
+        passwordText.setSize(150, 20); 
+        passwordText.setLocation(200, 200); 
+        container.add(passwordText);
+  
+        ssnLabel = new JLabel("SSN"); 
+        ssnLabel.setFont(new Font("Arial", Font.PLAIN, 20)); 
+        ssnLabel.setSize(100, 20); 
+        ssnLabel.setLocation(100, 250); 
+        container.add(ssnLabel); 
+        
+        ssnText = new JTextField(); 
+        ssnText.setFont(new Font("맑은고딕", Font.PLAIN, 15)); 
+        ssnText.setSize(150, 20); 
+        ssnText.setLocation(200, 250); 
+        container.add(ssnText);
+  
+        addrLabel = new JLabel("Address"); 
+        addrLabel.setFont(new Font("Arial", Font.PLAIN, 20)); 
+        addrLabel.setSize(100, 20); 
+        addrLabel.setLocation(100, 300); 
+        container.add(addrLabel); 
+        
+        addrText = new JTextField(); 
+        addrText.setFont(new Font("맑은고딕", Font.PLAIN, 15)); 
+        addrText.setSize(150, 20); 
+        addrText.setLocation(200, 300); 
+        container.add(addrText);
+        
+  
+        submitButton = new JButton("Save");
+        submitButton.setFont(new Font("Arial", Font.PLAIN, 15));
+        submitButton.setSize(100, 20);
+        submitButton.setLocation(100, 400);
+        submitButton.addActionListener(this);
+        container.add(submitButton);
+        
+        listButton = new JButton("List");
+        listButton.setFont(new Font("Arial", Font.PLAIN, 15));
+        listButton.setSize(100, 20);
+        listButton.setLocation(220, 400);
+        listButton.addActionListener(this);
+        container.add(listButton);
+        
+        loginButton = new JButton("Log in");
+        loginButton.setFont(new Font("Arial", Font.PLAIN, 15));
+        loginButton.setSize(100, 20);
+        loginButton.setLocation(340, 400);
+        loginButton.addActionListener(this);
+        container.add(loginButton);
+        
+        detailButton = new JButton("Detail");
+        detailButton.setFont(new Font("Arial", Font.PLAIN, 15));
+        detailButton.setSize(100, 20);
+        detailButton.setLocation(100, 440);
+        detailButton.addActionListener(this);
+        container.add(detailButton);
+        nameButton = new JButton("Name");
+        nameButton.setFont(new Font("Arial", Font.PLAIN, 15));
+        nameButton.setSize(100, 20);
+        nameButton.setLocation(220, 440);
+        nameButton.addActionListener(this);
+        container.add(nameButton);
+        genderButton = new JButton("Gender");
+        genderButton.setFont(new Font("Arial", Font.PLAIN, 15));
+        genderButton.setSize(100, 20);
+        genderButton.setLocation(340, 440);
+        genderButton.addActionListener(this);
+        container.add(genderButton);
+        countButton = new JButton("Count");
+        countButton.setFont(new Font("Arial", Font.PLAIN, 15));
+        countButton.setSize(100, 20);
+        countButton.setLocation(100, 480);
+        countButton.addActionListener(this);
+        container.add(countButton);
+        updateButton = new JButton("Update");
+        updateButton.setFont(new Font("Arial", Font.PLAIN, 15));
+        updateButton.setSize(100, 20);
+        updateButton.setLocation(220, 480);
+        updateButton.addActionListener(this);
+        container.add(updateButton);
+        deleteButton = new JButton("Delete");
+        deleteButton.setFont(new Font("Arial", Font.PLAIN, 15));
+        deleteButton.setSize(100, 20);
+        deleteButton.setLocation(340, 480);
+        deleteButton.addActionListener(this);
+        container.add(deleteButton);
+  
+        resultText = new JTextArea(); 
+        resultText.setFont(new Font("맑은고딕", Font.PLAIN, 15)); 
+        resultText.setSize(300, 400); 
+        resultText.setLocation(500, 100); 
+        resultText.setLineWrap(true); 
+        resultText.setEditable(false); 
+        container.add(resultText); 
+ 
+        setVisible(true); 
+    } 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		if (e.getSource() == submitButton) {
+		
+		if(e.getSource() == submitButton) {
+			JOptionPane.showMessageDialog(this, "test");
 			nameText.setText("일,이,삼,사,오");
 			useridText.setText("a,b,c,d,e");
 			passwordText.setText("1,2,3,4,5");
-			ssnText.setText("에이, 비, 시, 디, 이!");
-			addrText.setText("하나,둘,셋,넷,다섯");
-
+			ssnText.setText("910101-1,920202-2,930303-3,940404-4,950505-5");
+			addrText.setText("서울,서울,서울,부산,부산");
 			String[] names = nameText.getText().split(",");
-			String[] userIds = useridText.getText().split(",");
+			String[] userids = useridText.getText().split(",");
 			String[] passwords = passwordText.getText().split(",");
 			String[] ssns = ssnText.getText().split(",");
 			String[] addrs = addrText.getText().split(",");
-
 			Member member = null;
-			for (int i = 0; i < names.length; i++) {
-				member = new Member();
+			for(int i=0;i< names.length; i++) {
+				member = new Member(); 
 				member.setName(names[i]);
-				member.setUserId(userIds[i]);
-				member.setPassword(passwords[i]);
+				member.setUserid(userids[i]);
+				member.setPasswd(passwords[i]);
 				member.setSsn(ssns[i]);
-				member.setAddress(addrs[i]);
+				member.setAddr(addrs[i]);
 				memberService.add(member);
 			}
-		} else if (e.getSource() == listButton) {
+		}else if(e.getSource() == listButton) {
 			Member[] members = memberService.list();
 			String result = "";
-			for (int i = 0; i < members.length; i++) {
-				result += members[i];
+			for(int i=0;i< members.length; i++) {
+				result += (members[i]+"\n");
 			}
-			JOptionPane.showMessageDialog(this, "로그인 성공");
 			nameText.setText("");
 			useridText.setText("");
 			passwordText.setText("");
 			ssnText.setText("");
 			addrText.setText("");
 			resultText.setText(result);
-
-		} else if (e.getSource() == loginButton) {
+		}else if(e.getSource() == loginButton) {
 			Member member = new Member();
-			member.setUserId(useridText.getText());
-			member.setPassword(passwordText.getText());
-			Member login = memberService.login(member);
-			if (login != null) {
-				resultText.setText(login.toString());
-			} else {
+			member.setUserid(useridText.getText());
+			member.setPasswd(passwordText.getText());
+			Member returnMember =memberService.login(member);
+			if(returnMember != null) {
+				resultText.setText(returnMember.toString());
+			}else {
 				resultText.setText("로그인 실패");
 			}
-		} else if (e.getSource() == detailButton) {
-			Member member = new Member();
-			member.setUserId(useridText.getText());
-			Member detail = memberService.detail(member.getUserId());
-			if (detail != null) {
-				resultText.setText(detail.toString());
-			} else {
-				resultText.setText("일치하는 정보 없음");
+		}else if(e.getSource() == detailButton) {
+			Member returnMember = memberService.detail(useridText.getText());
+			if(returnMember != null) {
+				resultText.setText(returnMember.toString());
+			}else {
+				resultText.setText("해당 ID 가 존재하지 않음");
 			}
-
 		}else if(e.getSource() == nameButton) {
-			Member member = new Member();
-			member.setName(nameText.getName());
-//			Member Names = 
+			Member[] returnMembers = memberService.searchByName(nameText.getText());
+			if(returnMembers != null) {
+				String result = "";
+				for(int i=0; i< returnMembers.length; i++) {
+					result += returnMembers[i].toString()+"\n";
+				}
+				resultText.setText(result);
+			}else {
+				resultText.setText("해당 이름이 존재하지 않음");
+			}
 		}else if(e.getSource() == genderButton) {
-		} else if (e.getSource() == countButton) {
-		} else if (e.getSource() == updateButton) {
-		} else if (e.getSource() == deleteButton) {
+			memberService.searchByGender(ssnText.getText());
+		}else if(e.getSource() == countButton) {
+			resultText.setText(String.valueOf(memberService.count()));
+		}else if(e.getSource() == updateButton) {
+			String userid = useridText.getText();
+			String newPassword = passwordText.getText();
+			Member updateMember = new Member();
+			updateMember.setUserid(userid);
+			updateMember.setPasswd(newPassword);
+			memberService.update(updateMember);
+		}else if(e.getSource() == deleteButton) {
+			Member deleteMember = new Member();
+			deleteMember.setUserid(useridText.getText());
+			deleteMember.setPasswd(passwordText.getText());
+			memberService.delete(deleteMember);
+		}
 			
 		
-		
 	}
-}}
+}
