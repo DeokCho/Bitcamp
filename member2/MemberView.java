@@ -23,6 +23,7 @@ public class MemberView extends JFrame implements ActionListener {
 
 	public void open() {
 		memberService = new MemberServiceImpl();
+
 		setTitle("Swing Exercise");
 		setBounds(300, 90, 900, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -102,18 +103,21 @@ public class MemberView extends JFrame implements ActionListener {
 		submitButton.setSize(100, 20);
 		submitButton.setLocation(120, 450);
 		container.add(submitButton);
+		submitButton.addActionListener(this);
 
 		listButton = new JButton("List");
 		listButton.setFont(new Font("Arial", Font.PLAIN, 15));
 		listButton.setSize(100, 20);
 		listButton.setLocation(240, 450);
 		container.add(listButton);
+		listButton.addActionListener(this);
 
 		loginButton = new JButton("Login");
 		loginButton.setFont(new Font("Arial", Font.PLAIN, 15));
 		loginButton.setSize(100, 20);
 		loginButton.setLocation(360, 450);
 		container.add(loginButton);
+		loginButton.addActionListener(this);
 
 		resultText = new JTextArea();
 		resultText.setFont(new Font("맑은고딕", Font.PLAIN, 15));
@@ -128,8 +132,9 @@ public class MemberView extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
+		System.out.println("가동");
 		if (e.getSource() == submitButton) {
-			System.out.println("가동");
 			nameText.setText("일,이,삼,사,오");
 			useridText.setText("a,b,c,d,e");
 			passwordText.setText("1,2,3,4,5");
@@ -144,6 +149,7 @@ public class MemberView extends JFrame implements ActionListener {
 
 			Member[] members = new Member[5];
 			for (int i = 0; i < members.length; i++) {
+				members[i] = new Member();
 				members[i].setName(names[i]);
 				members[i].setId(userIds[i]);
 				members[i].setPw(passwords[i]);
@@ -152,11 +158,11 @@ public class MemberView extends JFrame implements ActionListener {
 				memberService.add(members[i]);
 			}
 		} else if (e.getSource() == listButton) {
-			JOptionPane.showMessageDialog(this, useridText.getText() + "," + passwordText.getText());
+			JOptionPane.showMessageDialog(this, "Login : "+useridText.getText()+passwordText.getText());
 			Member[] members = memberService.getMember();
 			String result = "";
-			for (int i = 0; i < members.length; i++) {
-				result += members[i] + "\n";
+			for(int i=0; i<members.length; i++) {
+				result += members[i];
 			}
 			nameText.setText("");
 			useridText.setText("");
@@ -164,6 +170,7 @@ public class MemberView extends JFrame implements ActionListener {
 			ssnText.setText("");
 			addrText.setText("");
 			resultText.setText(result);
+			
 		} else if (e.getSource() == loginButton) {
 			Member member = new Member();
 			member.setId(useridText.getText());

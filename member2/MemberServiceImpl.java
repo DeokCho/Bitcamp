@@ -44,6 +44,8 @@ public class MemberServiceImpl implements MemberService {
 				login = members[i];
 				break;
 			}
-		}return login;
+		}
+		return login;
 	}
+
 }
