@@ -33,15 +33,6 @@ public class PhoneServiceImpl implements PhoneService{
 	}
 	
 	
-	@Override
-	public Phone[] list() {
-		return phones;
-	}
-
-	@Override
-	public Phone detail(Phone phone) {
-		return null;
-	}
 
 	@Override
 	public int count() {
@@ -80,6 +71,42 @@ public class PhoneServiceImpl implements PhoneService{
 	public GallaxyNote[] GallaxyNoteList() {
 		return gallaxyNotes;
 	}
+
+@Override
+public GallaxyNote[] gallaxyNoteList() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public Iphone[] iPhoneList() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public GallaxyNote detail(GallaxyNote phone) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public Iphone detail(Iphone phone) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public Phone[] phoneList() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public CellPhone[] cellPhoneList() {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 //	public void setGallaxyNote(GallaxyNote[] gallaxyNotes) {
 //		this.gallaxyNotes = gallaxyNotes;

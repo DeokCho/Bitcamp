@@ -20,7 +20,7 @@ public class PhoneController {
 				break;
 			case "2":
 				System.out.println("주소록 출력");
-				Phone[] phones = service.list();
+				Phone[] phones = service.CellList();
 				String message = "";
 				for (int i = 0; i < 3; i++) {
 					message +=  phones[i].toString()+"\n";

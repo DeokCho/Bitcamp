@@ -12,13 +12,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import sun.print.resources.serviceui;
+
 public class MemberView extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private Container container;
 	private JLabel title, nameLabel, useridLabel, passwordLabel, ssnLabel, addrLabel;
 	private JTextField nameText, useridText, passwordText, ssnText, addrText;
 	private JTextArea resultText;
-	private JButton submitButton, listButton, loginButton;
+	private JButton submitButton, listButton, loginButton, nameButton, countButton, detailButton, genderButton,
+			updateButton, deleteButton;
 	public MemberService memberService;
 
 	public void open() {
@@ -119,6 +122,48 @@ public class MemberView extends JFrame implements ActionListener {
 		container.add(loginButton);
 		loginButton.addActionListener(this);
 
+		detailButton = new JButton("Detail");
+		detailButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		detailButton.setSize(100, 20);
+		detailButton.setLocation(120, 480);
+		container.add(detailButton);
+		detailButton.addActionListener(this);
+
+		nameButton = new JButton("name");
+		nameButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		nameButton.setSize(100, 20);
+		nameButton.setLocation(240, 480);
+		container.add(nameButton);
+		nameButton.addActionListener(this);
+
+		genderButton = new JButton("gender");
+		genderButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		genderButton.setSize(100, 20);
+		genderButton.setLocation(360, 480);
+		container.add(genderButton);
+		genderButton.addActionListener(this);
+
+		countButton = new JButton("count");
+		countButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		countButton.setSize(100, 20);
+		countButton.setLocation(120, 510);
+		container.add(countButton);
+		countButton.addActionListener(this);
+
+		updateButton = new JButton("Update");
+		updateButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		updateButton.setSize(100, 20);
+		updateButton.setLocation(240, 510);
+		container.add(updateButton);
+		updateButton.addActionListener(this);
+
+		deleteButton = new JButton("Delete");
+		deleteButton.setFont(new Font("Arial", Font.PLAIN, 15));
+		deleteButton.setSize(100, 20);
+		deleteButton.setLocation(360, 510);
+		container.add(deleteButton);
+		deleteButton.addActionListener(this);
+
 		resultText = new JTextArea();
 		resultText.setFont(new Font("맑은고딕", Font.PLAIN, 15));
 		resultText.setSize(300, 400);
@@ -133,7 +178,6 @@ public class MemberView extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		System.out.println("가동");
 		if (e.getSource() == submitButton) {
 			nameText.setText("일,이,삼,사,오");
 			useridText.setText("a,b,c,d,e");
@@ -147,41 +191,54 @@ public class MemberView extends JFrame implements ActionListener {
 			String[] ssns = ssnText.getText().split(",");
 			String[] addrs = addrText.getText().split(",");
 
-			Member[] members = new Member[5];
-			for (int i = 0; i < members.length; i++) {
-				members[i] = new Member();
-				members[i].setName(names[i]);
-				members[i].setId(userIds[i]);
-				members[i].setPw(passwords[i]);
-				members[i].setSsn(ssns[i]);
-				members[i].setAddress(addrs[i]);
-				memberService.add(members[i]);
+			Member member = null;
+			for (int i = 0; i < names.length; i++) {
+				member = new Member();
+				member.setName(names[i]);
+				member.setUserId(userIds[i]);
+				member.setPassword(passwords[i]);
+				member.setSsn(ssns[i]);
+				member.setAddress(addrs[i]);
+				memberService.add(member);
 			}
 		} else if (e.getSource() == listButton) {
-			JOptionPane.showMessageDialog(this, "Login : "+useridText.getText()
-			+passwordText.getText());
 			Member[] members = memberService.list();
 			String result = "";
-			for(int i=0; i<members.length; i++) {
+			for (int i = 0; i < members.length; i++) {
 				result += members[i];
 			}
+			JOptionPane.showMessageDialog(this, "로그인 성공");
 			nameText.setText("");
 			useridText.setText("");
 			passwordText.setText("");
 			ssnText.setText("");
 			addrText.setText("");
 			resultText.setText(result);
-			
+
 		} else if (e.getSource() == loginButton) {
 			Member member = new Member();
-			member.setId(useridText.getText());
-			member.setPw(passwordText.getText());
+			member.setUserId(useridText.getText());
+			member.setPassword(passwordText.getText());
 			Member login = memberService.login(member);
 			if (login != null) {
 				resultText.setText(login.toString());
 			} else {
 				resultText.setText("로그인 실패");
 			}
-		}
+		} else if (e.getSource() == detailButton) {
+			Member member = new Member();
+			member.setUserId(useridText.getText());
+			Member detail = memberService.detail(member.getUserId());
+			if (detail != null) {
+				resultText.setText(detail.toString());
+			} else {
+				resultText.setText("일치하는 정보 없음");
+			}
+
+//		}else if(e.getSource() == nameButton) {
+//			Member member = new Member();
+//			member.setName(nameText.getName());
+//			Member Names = 
+//		}
 	}
-}
+}}
