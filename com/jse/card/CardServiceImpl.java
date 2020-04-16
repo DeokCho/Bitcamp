@@ -15,24 +15,33 @@ public class CardServiceImpl implements CardService{
 		i++; // 배열의 개수를 증가시키기 위해, for문의 i와 동일하게 증가 
 	}
 
-	@Override
-	public void setCard(Card[] cards) {
-		this.cards=cards;
-	}
+	
 
 	@Override
-	public Card[] getCard() {
+	public Card[] list() {
 		return cards;
 	}
 
 	@Override
-	public void setI(int i) {
-		this.i=i;
+	public Card detail(Card card) {
+		return null;
 	}
 
 	@Override
-	public int getI() {
-		return i;
+	public int count() {
+		return 0;
 	}
+
+	@Override
+	public void update(Card card) {
+		
+	}
+
+	@Override
+	public void delete(Card card) {
+		
+	}
+
+
 	
 }

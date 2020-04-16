@@ -28,7 +28,7 @@ public class CardController {
 //				service.add(card);
 //				break; 위의 for문에서 반복하는 내용
 			case "2":
-				Card[] cards = service.getCard();
+				Card[] cards = service.list();
 				String message = "";
 				for(int i=0; i<cards.length; i++) {
 					message += cards[i].toString()+"\n";

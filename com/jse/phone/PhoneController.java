@@ -5,7 +5,7 @@ import com.jse.util.Constants;
 
 public class PhoneController {
 	public static void main(String[] args) {
-		PhoneService service = new PhoneService();
+		PhoneServiceImpl service = new PhoneServiceImpl();
 		while (true) {
 			System.out.println();
 			switch (JOptionPane.showInputDialog(Constants.MENU)) {
@@ -20,7 +20,7 @@ public class PhoneController {
 				break;
 			case "2":
 				System.out.println("주소록 출력");
-				Phone[] phones = service.getPhone();
+				Phone[] phones = service.list();
 				String message = "";
 				for (int i = 0; i < 3; i++) {
 					message +=  phones[i].toString()+"\n";

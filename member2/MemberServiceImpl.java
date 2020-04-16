@@ -10,26 +10,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void setMember(Member[] members) {
-		this.members = members;
-	}
-
-	@Override
-	public Member[] getMember() {
-		return members;
-	}
-
-	@Override
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-	@Override
-	public int getCount() {
-		return count;
-	}
-
-	@Override
 	public void add(Member member) {
 		members[count] = member;
 		count++;
@@ -47,5 +27,34 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return login;
 	}
+
+
+	@Override
+	public Member[] list() {
+		return null;
+	}
+	@Override
+	public Member detail(Member member) {
+		return null;
+	}
+
+	@Override
+	public int Count() {
+		return 0;
+	}
+
+
+	@Override
+	public void update(Member member) {
+		
+	}
+
+
+	@Override
+	public void delete(Member member) {
+		
+	}
+
+	
 
 }

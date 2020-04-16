@@ -158,8 +158,9 @@ public class MemberView extends JFrame implements ActionListener {
 				memberService.add(members[i]);
 			}
 		} else if (e.getSource() == listButton) {
-			JOptionPane.showMessageDialog(this, "Login : "+useridText.getText()+passwordText.getText());
-			Member[] members = memberService.getMember();
+			JOptionPane.showMessageDialog(this, "Login : "+useridText.getText()
+			+passwordText.getText());
+			Member[] members = memberService.list();
 			String result = "";
 			for(int i=0; i<members.length; i++) {
 				result += members[i];

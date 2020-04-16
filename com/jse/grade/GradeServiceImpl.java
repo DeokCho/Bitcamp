@@ -10,31 +10,32 @@ public class GradeServiceImpl implements GradeService {
 		count = 0;
 	}
 	@Override
-	public void setGrades(Grade[] grades) {
-		this.grades = grades;
-	}
-	@Override
-	public Grade[] getGrades() {
-		return grades;
-	}
-	@Override
 	public void add(Grade grade) {
 		grades[count] = grade;
 		count++;
-
+	}
+	@Override
+	public Grade[] list() {
+		return grades;
+	}
+	@Override
+	public Grade detail(Grade grade) {
+		return null;
 	}
 
 	@Override
-	public void setCount(int count) {
-		this.count = count;
-
-	}
-
-	@Override
-	public int getCount() {
+	public int Count() {
 		return count;
 	}
-
+	@Override
+	public void update(Grade grade) {
+		
+	}
+	@Override
+	public void delete(Grade grade) {
+		
+	}
+	
 	@Override
 	public int total(Grade grade) {
 		return grade.getKorean() + grade.getEnglish() + grade.getMath() + grade.getJava();
@@ -66,15 +67,6 @@ public class GradeServiceImpl implements GradeService {
 		return resule;
 	}
 
-	@Override
-	public String printGrades() {
-		String result = "";
-		for (int i = 0; i < 4; i++) {
-			result += String.format("[%s : 총점 %d 점, 평균 %d 점,학점 : %s] \n", grades[i].getName(), total(grades[i]),
-					average(grades[i]), record(grades[i]));
-		}
-		return result;
-	}
 
 	@Override
 	public String ranking() {
@@ -108,5 +100,6 @@ public class GradeServiceImpl implements GradeService {
 		}
 		return null;
 	}
+	
 
 }

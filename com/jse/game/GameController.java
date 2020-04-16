@@ -14,7 +14,7 @@ public class GameController { // r 로컬변수 중 외부에서 들어오는 �
 				return;
 			case "1":
 				game = new Game();
-				Game[] games = gameService.getGame();
+				Game[] games = gameService.list();
 				for (int i = 0; i < games.length; i++) {
 					String[] value = JOptionPane.showInputDialog(Constants.GAME_DICE_START).split(",");
 					

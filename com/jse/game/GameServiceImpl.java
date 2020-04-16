@@ -7,13 +7,27 @@ public class GameServiceImpl implements GameService {
 		game = new Game[3];
 		this.game = game;
 	}
-
-	public Game[] getGame() {
+	@Override
+	public void add(Game game) {
+		
+	}
+	public Game[] list() {
 		return game;
 	}
+	@Override
+	public Game detail(Game game) {
+		return null;
+	}
+	@Override
+	public int count() {
+		return 0;
+	}
 
-	public void setGame(Game[] game) {
-		this.game = game;
+	@Override
+	public void update(Game game) {
+	}
+	@Override
+	public void delete(Game game) {
 	}
 
 }
