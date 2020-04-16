@@ -207,7 +207,14 @@ public class MemberView extends JFrame implements ActionListener {
 			addrText.setText("");
 			
 		} else if (e.getSource() == loginButton) {
-			Member member = memberService.login(useridText.getText());
+			Member member = new Member();
+			member.setId(useridText.getText());
+			member.setPw(passwordText.getText());
+			Member returnMember = memberService.login(member);
+			if(returnMember != null) {
+				resultText.setText(returnMember.toString());
+			}else
+				resultText.setText("로그인 실패");
 		} else if (e.getSource() == detailButton) {
 		} else if (e.getSource() == nameButton) {
 		} else if (e.getSource() == genderButton) {

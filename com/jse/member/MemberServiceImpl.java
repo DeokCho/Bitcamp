@@ -54,7 +54,15 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public Member login(Member member) {
-		Member returnLogin = new Member();
+		Member returnLogin = null;
+		for(int i=0; i<count; i++) {
+			if(member.getId().equals(members[i].getId()) 
+					&& member.getPw().equals(members[i].getPw())) {
+				returnLogin = members[i];
+				break;
+			}
+						
+		}
 		return returnLogin;
 	}
 
