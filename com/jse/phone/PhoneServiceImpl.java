@@ -35,7 +35,7 @@ public class PhoneServiceImpl implements PhoneService{
 	
 	@Override
 	public Phone[] list() {
-		return null;
+		return phones;
 	}
 
 	@Override
@@ -61,29 +61,29 @@ public class PhoneServiceImpl implements PhoneService{
 	
 	
 	
-	public CellPhone[] getCellPhones() {
+	public CellPhone[] CellList() {
 		return cellPhones;
 	}
 
-	public void setCellPhones(CellPhone[] cellPhones) {
-		this.cellPhones = cellPhones;
-	}
+//	public void setCellPhones(CellPhone[] cellPhones) {
+//		this.cellPhones = cellPhones;
+//	}
 
-	public Iphone[] getIphones() {
+	public Iphone[] IphonesList() {
 		return iphones;
 	}
 
-	public void setIphones(Iphone[] iphones) {
-		this.iphones = iphones;
-	}
+//	public void setIphones(Iphone[] iphones) {
+//		this.iphones = iphones;
+//	}
 
-	public GallaxyNote[] getGallaxyNote() {
+	public GallaxyNote[] GallaxyNoteList() {
 		return gallaxyNotes;
 	}
 
-	public void setGallaxyNote(GallaxyNote[] gallaxyNotes) {
-		this.gallaxyNotes = gallaxyNotes;
-	}
+//	public void setGallaxyNote(GallaxyNote[] gallaxyNotes) {
+//		this.gallaxyNotes = gallaxyNotes;
+//	}
 
 	
 

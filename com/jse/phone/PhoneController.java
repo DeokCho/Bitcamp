@@ -36,7 +36,7 @@ public class PhoneController {
 				}
 				break;
 			case "4":
-				CellPhone[] cellPhones = service.getCellPhones();
+				CellPhone[] cellPhones = service.CellList();
 				String message2 = "";
 				for (int i = 0; i < 3; i++) {
 					message2 += cellPhones[i].toString()+"\n";
@@ -52,7 +52,7 @@ public class PhoneController {
 				}				
 					break;
 			case "6":
-				Iphone[] iphones = service.getIphones();
+				Iphone[] iphones = service.IphonesList();
 				String message3 = "";
 				for(int i=0; i<3; i++) {
 					message3 += iphones[i].toString()+"\n";
@@ -66,7 +66,7 @@ public class PhoneController {
 				}
 				break;
 			case"8":
-				GallaxyNote[] gallaxyNotes = service.getGallaxyNote();
+				GallaxyNote[] gallaxyNotes = service.GallaxyNoteList();
 				String message4 = "";
 				for(int i=0; i<3; i++) {
 					message4 += gallaxyNotes[i].toString()+"\n";
