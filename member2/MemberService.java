@@ -6,6 +6,7 @@ public interface MemberService {
 	public void add(Member member);
 	public Member[] list();
 	public Member[] searchByName(String name);
+	public Member[] searchByGender(String Gender);
 	public Member detail(String userid);
 	public Member name(String name);
 	public int Count();

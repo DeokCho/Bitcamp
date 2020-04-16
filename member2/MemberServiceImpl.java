@@ -20,7 +20,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member login(Member member) {
 		Member login = null;
-		for (int i = 0; i < members.length; i++) {
+		for (int i = 0; i < count; i++) {
 			if (member.getUserId().equals(members[i].getUserId())
 					&& member.getPassword().equals(members[i].getPassword())) {
 				login = new Member();
@@ -40,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member detail(String userid) {
 		Member detail = null;
-		for (int i = 0; i < members.length; i++) {
+		for (int i = 0; i < count; i++) {
 			if (userid.equals(members[i].getUserId())) {
 				detail = new Member();
 				detail = members[i];
@@ -58,7 +58,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int count(String name) {
 		int returnvalue = 0;
-		for (int i = 0; i < members.length; i++) {
+		for (int i = 0; i < count; i++) {
 			if (name.equals(members[i].getName())) {
 				returnvalue++;
 			}
@@ -67,8 +67,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public Member[] searchByGender(String Gender) {
+		return null;
+	}
+
+	@Override
 	public void update(Member member) {
-		for (int i = 0; i < members.length; i++) {
+		for (int i = 0; i < count; i++) {
 			if (member.getUserId().equals(members[i].getUserId())) {
 				members[i].setPassword(member.getPassword());
 				break;
@@ -78,9 +83,12 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void delete(Member member) {
-		for (int i = 0; i < members.length; i++) {
-			if (member.getUserId().equals(members[i].getUserId())) {
-
+		for (int i = 0; i < count; i++) {
+			if (member.getUserId().equals(members[i].getUserId())
+					&&member.getUserId().equals(members[i].getUserId())) {
+				members[i] = members[count-1];
+				members[count-1] = null;
+				count--;
 			}
 		}
 	}

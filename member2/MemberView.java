@@ -235,10 +235,16 @@ public class MemberView extends JFrame implements ActionListener {
 				resultText.setText("일치하는 정보 없음");
 			}
 
-//		}else if(e.getSource() == nameButton) {
-//			Member member = new Member();
-//			member.setName(nameText.getName());
+		}else if(e.getSource() == nameButton) {
+			Member member = new Member();
+			member.setName(nameText.getName());
 //			Member Names = 
-//		}
+		}else if(e.getSource() == genderButton) {
+		} else if (e.getSource() == countButton) {
+		} else if (e.getSource() == updateButton) {
+		} else if (e.getSource() == deleteButton) {
+			
+		
+		
 	}
 }}
