@@ -25,7 +25,14 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public Member[] searchByName(String name) {
-		Member[] returnName = new Member[5];
+		Member[] returnName = null;
+		for(int i=0; i<count; i++) {
+			if(name.equals(members[i].getName())) {
+				int j=0;
+				returnName[j] = members[i];
+				j++;
+			}
+		}
 		return returnName;
 	}
 
@@ -37,7 +44,12 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public Member detail(String userid) {
-		Member returnUserId = new Member();
+		Member returnUserId = null;
+		for(int i=0; i<count; i++) {
+			if(userid.equals(members[i].getId())) {
+				returnUserId = members[i];
+			}
+		}
 		return returnUserId;
 	}
 
