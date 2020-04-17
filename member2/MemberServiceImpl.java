@@ -95,7 +95,6 @@ public class MemberServiceImpl implements MemberService{
 				members[i].setPasswd(member.getPasswd());
 				break;
 			}
-			
 		}
 	}
 
